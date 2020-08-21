@@ -4,8 +4,8 @@ Pequeño complemento al cual se le irán agregando mejoras para el navegador Chr
 
 Varias cosas a tener en cuenta:
 
-•	Este complemento solo es valido para versiones igual o superior a Chrome 84 en su versión final.
-El complemento no a sido probado en versiones beta ni en versiones Canary.
+Este complemento solo es válido para versiones igual o superior a Chrome 84 en su versión final.
+El complemento no ha sido probado en versiones beta ni en versiones Canary.
 
 Este complemento solo funciona en versiones de NVDA 2019.3 en adelante.
 
@@ -31,18 +31,18 @@ Pues tabulamos una vez más y caeremos en un cuadro combinado teniendo que elegi
 
 Ahora volvemos a tabular hasta el botón Relaunch, lo pulsamos y la próxima vez que el navegador reinicie ya tendremos activado el modo lectura.
 
-Bien cuando entremos en una pagina que permita el modo lectura, cuidado no todas lo permiten. Podremos activar dicho modo para quitar todo lo que molesta de la pagina de dos maneras:
+Bien cuando entremos en una página que permita el modo lectura, cuidado no todas lo permiten. Podremos activar dicho modo para quitar todo lo que molesta de la página de dos maneras:
 
-1º Desde el menú de Chrome subiendo o bajando por el hasta que oigamos Activar/Desactivar modo de lectura y entraremos en modo lectura, si en el menú no aparece dicha opción es que la pagina en la que nos encontramos no lo permite.
+1º Desde el menú de Chrome subiendo o bajando por el hasta que oigamos Activar/Desactivar modo de lectura y entraremos en modo lectura, si en el menú no aparece dicha opción es que la página en la que nos encontramos no lo permite.
 
-2º Podemos una vez que estamos en la pagina pulsar F6 y dos tabulaciones para caer en un botón que dice Activar/Desactivar modo de lectura, si lo pulsamos entraremos en dicho modo. Si dicho botón no aparece es que la pagina en la que estamos no lo permite.
+2º Podemos una vez que estamos en la página pulsar F6 y dos tabulaciones para caer en un botón que dice Activar/Desactivar modo de lectura, si lo pulsamos entraremos en dicho modo. Si dicho botón no aparece es que la página en la que estamos no lo permite.
 
-Pues bien aunque parezca poco si somos mucho de usar dicho modo de lectura, echaba de menos un atajo rápido para poder activar o desactivar dicho modo o que me avise si la pagina no lo permite.
+Pues bien aunque parezca poco si somos mucho de usar dicho modo de lectura, echaba de menos un atajo rápido para poder activar o desactivar dicho modo o que me avise si la página no lo permite.
 
 Pues bien ahora con el complemento si pulsamos F9 activaremos el modo lectura.
 
-Bien si la pagina en la que nos encontramos no permite dicho modo se nos avisara con un mensaje.
+Bien si la página en la que nos encontramos no permite dicho modo se nos avisara con un mensaje.
 
-Si la pagina lo permite entrara en modo lectura avisando que entra en dicho modo con un mensaje.
+Si la página lo permite entrara en modo lectura avisando que entra en dicho modo con un mensaje.
 
-Si damos F9 ya estando dentro del modo lectura saldrá de el y nos avisara también de que esta saliendo de dicho modo.
+Si damos F9 ya estando dentro del modo lectura saldrá de él y nos avisara también de que está saliendo de dicho modo.
