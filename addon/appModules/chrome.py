@@ -8,8 +8,6 @@ import globalCommands
 class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:F9")
 	def script_chromeReader(self, gesture):
-#		fg = api.getForegroundObject()
-#		obj = fg.children[0].children[1].children[0].children[1].children[4].children[24].children[9]
 		obj = api.getForegroundObject().children[0].children[1].children[0].children[1].children[4].children[24].children[9]
 		ffVersion = int(self.productVersion.split(".")[0])
 		if ffVersion == 84:
