@@ -1,32 +1,43 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) 2020 Héctor J. Benítez Corredera <xebolax@gmail.com>
+# This file is covered by the GNU General Public License.
+
+# import the necessary modules.
 import appModuleHandler
+import addonHandler
 import api
 import ui
-from scriptHandler import script
-import scriptHandler
-import globalCommands
+from globalCommands import commands
+from scriptHandler import script, executeScript
+
+# For translation
+addonHandler.initTranslation()
 
 class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:F9")
 	def script_chromeReader(self, gesture):
-		obj = api.getForegroundObject().children[0].children[1].children[0].children[1].children[4].children[24].children[9]
-		ffVersion = int(self.productVersion.split(".")[0])
-		if ffVersion == 84:
-			if obj.isFocusable == False:
-				ui.message("Modo lectura no disponible")
-			else:
-				tituloVentana = api.getForegroundObject().children[0].children[1].children[1].children[1]
-				tituloTrozos = tituloVentana.name.split(" - ")
-				if len(tituloTrozos) == 1:
-					ui.message("Cargando modo lectura...")
-					api.setNavigatorObject(obj) 
-					scriptHandler.executeScript(globalCommands.commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
-				elif tituloTrozos[1] == "Modo de lectura":
-					ui.message("Descargando modo lectura...")
-					api.setNavigatorObject(obj) 
-					scriptHandler.executeScript(globalCommands.commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
+		try:
+			obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(9)
+			if obj.IA2Attributes["class"] == "ReaderModeIconView":
+				if int(self.productVersion.split(".")[0]) >= 84:
+					if obj.isFocusable == False:
+						# Translators: Indicates with a message that read mode is not available
+						ui.message(_("Read mode not available"))
+					else:
+						try:
+							objBoton = api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0)
+							# Translators: Indicates with a message that we are leaving the reading mode
+							ui.message(_("Downloading read mode..."))
+							api.setNavigatorObject(obj) 
+							executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
+						except:
+							# Translators: Indicates with a message that we are entering reading mode
+							ui.message(_("Loading readout mode..."))
+							api.setNavigatorObject(obj) 
+							executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
 				else:
-					ui.message("Cargando modo lectura...")
-					api.setNavigatorObject(obj) 
-					scriptHandler.executeScript(globalCommands.commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
-		else:
-			pass
+					# Translators: Indicates with a message that the plug-in is only valid for Chrome 84.0 and above
+					ui.message(_("Supported add-on from Chrome +84.0"))
+		except (KeyError, AttributeError):
+			# Translators: Indicates with a message that the read mode was not found
+			ui.message(_("Read mode not found"))

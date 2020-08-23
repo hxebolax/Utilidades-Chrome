@@ -11,15 +11,15 @@ addon_info = {
 	# for previously unpublished addons, please follow the community guidelines at:
 	# https://bitbucket.org/nvdaaddonteam/todo/raw/master/guidelines.txt
 	# add-on Name, internal for nvda
-	"addon_name": "utilidadesChrome",
+	"addon_name": "ChromeUtilities",
 	# Add-on summary, usually the user visible name of the addon.
 	# Translators: Summary for this add-on to be shown on installation and add-on information.
-	"addon_summary": _("Utilidades Chrome"),
+	"addon_summary": _("Chrome Utilities"),
 	# Add-on description
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
-	"addon_description": _("Utilidades para Chrome"),
+	"addon_description": _("Enhancements to make Chrome easier to use with NVDA"),
 	# version
-	"addon_version": "0.1",
+	"addon_version": "0.2",
 	# Author(s)
 	"addon_author": u"Héctor J. Benítez Corredera <xebolax@gmail.com>",
 	# URL for the add-on documentation support
