@@ -17,9 +17,17 @@ class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:F9")
 	def script_chromeReader(self, gesture):
 		try:
-			obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(9)
+			if int(self.productVersion.split(".")[0]) == 84: # Estable
+				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(9)
+			elif int(self.productVersion.split(".")[0]) == 85: # Beta
+				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(10)
+			elif int(self.productVersion.split(".")[0]) == 87: # Canary
+				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(9)
+			else:
+				# Translators: Indicates with a message that the plug-in is only valid for Chrome 84.0 and above
+				ui.message(_("Supported add-on from Chrome +84.0"))
+
 			if obj.IA2Attributes["class"] == "ReaderModeIconView":
-				if int(self.productVersion.split(".")[0]) >= 84:
 					if obj.isFocusable == False:
 						# Translators: Indicates with a message that read mode is not available
 						ui.message(_("Read mode not available"))
@@ -35,9 +43,6 @@ class AppModule(appModuleHandler.AppModule):
 							ui.message(_("Loading readout mode..."))
 							api.setNavigatorObject(obj) 
 							executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
-				else:
-					# Translators: Indicates with a message that the plug-in is only valid for Chrome 84.0 and above
-					ui.message(_("Supported add-on from Chrome +84.0"))
 		except (KeyError, AttributeError):
 			# Translators: Indicates with a message that the read mode was not found
 			ui.message(_("Read mode not found"))
