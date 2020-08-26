@@ -2,11 +2,6 @@
 
 Pequeño complemento al cual se le irán agregando mejoras para el navegador Chrome.
 
-Varias cosas a tener en cuenta:
-
-Este complemento solo es válido para versiones igual o superior a Chrome 84 en su versión final.
-El complemento no ha sido probado en versiones beta ni en versiones Canary.
-
 Este complemento solo funciona en versiones de NVDA 2019.3 en adelante.
 
 ## Mejora en modo lectura

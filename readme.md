@@ -2,11 +2,6 @@
 
 Small plug-in to which improvements will be added for the Chrome browser.
 
-Several things to keep in mind:
-
-This add-on is only valid for versions equal or superior to Chrome 84 in its final version.
-The add-on has not been tested in beta or Canary versions.
-
 This add-on only works on versions of NVDA 2019.3 and above.
 
 ## Improvement in read mode

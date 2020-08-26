@@ -13,36 +13,53 @@ from scriptHandler import script, executeScript
 # For translation
 addonHandler.initTranslation()
 
+def searchObject(path):
+	obj = api.getForegroundObject()
+	for milestone in path:
+		obj = searchAmongTheChildren(milestone, obj)
+		if not obj:
+			return
+	return obj
+
+def searchAmongTheChildren(id, into):
+	if not into:
+		return(None)
+	key, value = id
+	obj = into.firstChild
+	if hasattr(obj, "IA2Attributes") and key in obj.IA2Attributes.keys():
+		if re.match(value, obj.IA2Attributes[key]):
+			return(obj)
+	while obj:
+		if hasattr(obj, "IA2Attributes") and key in obj.IA2Attributes.keys():
+			if re.match(value, obj.IA2Attributes[key]):
+				break
+		obj = obj.next
+	return(obj)
+
 class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:F9")
 	def script_chromeReader(self, gesture):
 		try:
-			if int(self.productVersion.split(".")[0]) == 84: # Estable
-				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(9)
-			elif int(self.productVersion.split(".")[0]) == 85: # Beta
-				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(10)
-			elif int(self.productVersion.split(".")[0]) == 87: # Canary
-				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).getChild(9)
-			else:
-				# Translators: Indicates with a message that the plug-in is only valid for Chrome 84.0 and above
-				ui.message(_("Supported add-on from Chrome +84.0"))
-
-			if obj.IA2Attributes["class"] == "ReaderModeIconView":
-					if obj.isFocusable == False:
-						# Translators: Indicates with a message that read mode is not available
-						ui.message(_("Read mode not available"))
-					else:
-						try:
-							objBoton = api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0)
-							# Translators: Indicates with a message that we are leaving the reading mode
-							ui.message(_("Downloading read mode..."))
-							api.setNavigatorObject(obj) 
-							executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
-						except:
-							# Translators: Indicates with a message that we are entering reading mode
-							ui.message(_("Loading readout mode..."))
-							api.setNavigatorObject(obj) 
-							executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
-		except (KeyError, AttributeError):
+			obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(4).getChild(24).firstChild
+		except AttributeError:
 			# Translators: Indicates with a message that the read mode was not found
 			ui.message(_("Read mode not found"))
+			return
+		while obj: # mientras obj no sea None
+			if hasattr(obj, "IA2Attributes") and "class" in obj.IA2Attributes and obj.IA2Attributes["class"] == "ReaderModeIconView":
+				break
+			obj = obj.next
+		if obj:
+			if obj.isFocusable == False:
+				# Translators: Indicates with a message that read mode is not available
+				ui.message(_("Read mode not available"))
+			else:
+				try:
+					objBoton = api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0)
+					# Translators: Indicates with a message that we are leaving the reading mode
+					ui.message(_("Downloading read mode..."))
+				except:
+					# Translators: Indicates with a message that we are entering reading mode
+					ui.message(_("Loading readout mode..."))
+				api.setNavigatorObject(obj) 
+				executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
