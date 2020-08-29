@@ -7,34 +7,20 @@ import appModuleHandler
 import addonHandler
 import api
 import ui
+import time
 from globalCommands import commands
 from scriptHandler import script, executeScript
+from tones import beep
+from speech import cancelSpeech
 
 # For translation
 addonHandler.initTranslation()
 
-def searchObject(path):
-	obj = api.getForegroundObject()
-	for milestone in path:
-		obj = searchAmongTheChildren(milestone, obj)
-		if not obj:
-			return
-	return obj
-
-def searchAmongTheChildren(id, into):
-	if not into:
-		return(None)
-	key, value = id
-	obj = into.firstChild
-	if hasattr(obj, "IA2Attributes") and key in obj.IA2Attributes.keys():
-		if re.match(value, obj.IA2Attributes[key]):
-			return(obj)
-	while obj:
-		if hasattr(obj, "IA2Attributes") and key in obj.IA2Attributes.keys():
-			if re.match(value, obj.IA2Attributes[key]):
-				break
-		obj = obj.next
-	return(obj)
+def script_test():
+		if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+			ui.message(_("Se encontro el botón"))
+		else:
+			ui.message(_("No encontro el botón"))
 
 class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:F9")
@@ -45,7 +31,7 @@ class AppModule(appModuleHandler.AppModule):
 			# Translators: Indicates with a message that the read mode was not found
 			ui.message(_("Read mode not found"))
 			return
-		while obj: # mientras obj no sea None
+		while obj:
 			if hasattr(obj, "IA2Attributes") and "class" in obj.IA2Attributes and obj.IA2Attributes["class"] == "ReaderModeIconView":
 				break
 			obj = obj.next
@@ -55,11 +41,22 @@ class AppModule(appModuleHandler.AppModule):
 				ui.message(_("Read mode not available"))
 			else:
 				try:
-					objBoton = api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0)
-					# Translators: Indicates with a message that we are leaving the reading mode
-					ui.message(_("Downloading read mode..."))
+					if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+						# Translators: Indicates with a message that we are leaving the reading mode
+						ui.message(_("Downloading read mode..."))
+						beep(100,150)
+						time.sleep(0.5)
+					else:
+						# Translators: Indicates with a message that we are entering reading mode
+						ui.message(_("Loading readout mode..."))
+						beep(100,150)
+						time.sleep(0.5)
 				except:
 					# Translators: Indicates with a message that we are entering reading mode
 					ui.message(_("Loading readout mode..."))
-				api.setNavigatorObject(obj) 
-				executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter") 
+					beep(100,150)
+					time.sleep(0.5)
+
+				api.setNavigatorObject(obj)
+				executeScript(commands.script_review_activate, "kb(desktop):NVDA+numpadEnter")
+				cancelSpeech()
