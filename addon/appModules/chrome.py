@@ -16,12 +16,6 @@ from speech import cancelSpeech
 # For translation
 addonHandler.initTranslation()
 
-def script_test():
-		if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
-			ui.message(_("Se encontro el botón"))
-		else:
-			ui.message(_("No encontro el botón"))
-
 class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:F9")
 	def script_chromeReader(self, gesture):
