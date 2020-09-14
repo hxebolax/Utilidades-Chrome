@@ -1,43 +1,1 @@
-# Chrome Utilities
-
-Small plug-in to which improvements will be added for the Chrome browser.
-
-This add-on only works on versions of NVDA 2019.3 and above.
-
-## Improvement in read mode
-
-Chrome itself doesn't bring this mode as if other browsers do.
-
-If we want to have such a function we'll have to activate it before we can use it.
-
-To activate this function we position ourselves in the address bar and type the following:
-
-chrome://flags
-
-We press enter and in the screen that leaves us in the search field Search flags we write the following:
-
-reader mode
-
-When we write it down we will hear that there is a result so we will tabulate until we hear the following:
-
--#enable-reader-mode 
-
-So we tabulate once more and fall into a combo box by choosing the option Enable.
-
-Now we tabulate again until the Relaunch button, we press it and the next time the browser restarts we'll have the read mode activated.
-
-Well, when we enter a page that allows the reading mode, be careful, not all of them allow it. We can activate this mode to remove all the annoying things from the page in two ways:
-
-1º From the Chrome menu going up or down until we hear Activate/Deactivate reading mode and we will enter in reading mode, if in the menu there is no such option it means that the page we are in does not allow it.
-
-2º Once we are in the page, we can press F6 and two tabs to fall in a button that says Activate/Deactivate reading mode, if we press it we will enter in that mode. If this button doesn't appear, the page we are in doesn't allow it.
-
-Well, although it seems little if we are a lot of using that reading mode, I missed a shortcut to enable or disable that mode or to warn me if the page does not allow it.
-
-Well now with the plug-in if we press F9 we will activate the reading mode.
-
-Well if the page we are in does not allow that mode we will be warned with a message.
-
-If the page allows it, it will enter in reading mode, warning us that it is entering in this mode with a message.
-
-If we press F9 while already in reading mode, it will exit and will also inform us that it is leaving that mode.
+# Chrome UtilitiesSmall plug-in to which improvements will be added for the Chrome browser.This add-on only works in versions of NVDA 2019.3 and above.## Plug-in keys:NVDA+F6: Opens the tab list dialog.F7: It will show us the history of the pages browsed backwards.F8: It will show us the history of the pages browsed forward.F9: It will activate and deactivate the reading mode.### Tab controlIn the Chrome browser we can change areas with F6 being able to reach the area of the tabs and browse them with arrows as well as on top of the tab we want if we press the applications key we display a menu with different options that we can make in the tab.We can also quickly switch between tabs with the combination CTRL+1 to 9, but things get complicated when we have more tabs.Well now the plug-in will have a combination that will display a dialogue with all the tabs that we have open in order as they were opened.To open this dialog we will have to press NVDA+F6.In this dialog there are two areas, one with the list of tabs and another with buttons, we can move between the different areas by tabbing or with the accelerator keys.In the list if we press the Enter key will take us to the tab that we have selected at that time.We have 4 buttons that are:Left click, which will leave us in the tab that we have selected in the list.Right click, which will display the options for the selected tab in the list.New Tab, this button will open a new tab where we can start from scratch, leaving the focus on the address bar to search or enter the address you want.Close, this button will close the dialog and leave us in the page from where the dialog was called.It should be noted that the tab dialog can be closed through the corresponding button, by pressing the ESC key or losing the focus.The latter means that with the tab dialog window open if we return to the browser, it will automatically close the tab list dialog.This ensures that when we call the dialog again it receives the correct information for each time it has been called.### Quick history of pages visitedIt has included the ability to quickly access the history of the pages we have visited either forward or backward.To access this history we will use F7 and F8.I will give you an example for your better understanding.If we open the browser and by default we do not have to open any page, we will go to www.google.com.Once the page is loaded, we press CTRL+L and enter www.nvda.es, now if we press F7 we will see that a menu with the Google page in the history is displayed. If we choose that Google page, it will load that page.Now if we press F8 we will see that we have in the history forward the page of NVDA in Spanish.Well these histories both back and front are for the tab that has the focus at all times, updating the history for each tab.This is useful when we navigate through many pages in the same session and in the same tab.Warning, the history is cleared when you close Chrome.### Improvement in read modeChrome alone does not bring this mode as if other browsers do.If we want to have such a function we will have to activate it before we can use it.To activate this function, position yourself in the address bar and type the following:chrome://flagsWe press enter and in the screen that leaves us in the search field Search flags we write the following:reader modeWhen we write it down we will hear that there is a result so we will tabulate until we hear the following:-#enable-reader-mode So we tabulate once more and we fall into a combo box having to choose the option Enable.Now we go back to tabulate until the Relaunch button, we press it and the next time the browser restarts we will have the reading mode activated.Well, when we enter a page that allows the reading mode, be careful, not all of them allow it. You can activate this mode to remove everything that is bothering you from the page in two ways:1? From the Chrome menu, going up or down until we hear Activate/Deactivate reading mode and we will enter in reading mode, if in the menu this option does not appear, it means that the page we are in does not allow it.2? We can once we are in the page press F6 and two tabs to fall in a button that says Activate/Deactivate reading mode, if we press it we will enter in that mode. If this button doesn't appear, the page we are in doesn't allow it.Well, although it seems little if we are much to use that reading mode, I missed a shortcut to enable or disable the mode or to warn me if the page does not allow.
