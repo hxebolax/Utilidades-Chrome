@@ -41,10 +41,9 @@ config.conf.spec['chromeconfig'] = confspec
 
 oldQuickNav = BrowseModeTreeInterceptor._quickNavScript
 
-# Text to translate
-# Translators: Text spoken when screen rapping to top.
+# Translators: Texto que avisa cuando se desplaza al inicio
 msgrpTop = _('Foco al inicio')
-# Translators: Text spoken when screen rapping to bottom.
+# Translators: Texto que avisa cuando se desplaza al final
 msgrpBottom = _('Foco al final')
 
 def getCurrentPos(self):
@@ -64,9 +63,8 @@ def resetPosition(self, positionNumber,itemType):
 	pos.move(textInfos.UNIT_LINE,1,endPoint="end")
 	itemText = '{}s'.format(itemType) if itemType[-1] != 'x' else '{}es'.format(itemType)
 	message(
-			# translators: Text spoken when the type of nav items does not exist in the page.
+			# translators: Mensaje que avisa la falta de controles
 			_('No hay controles en la pagina.'))
-#			_('No existe {} en esta página.').format(itemText))
 
 def updatePosition(obj,position):
 	objPos = obj.makeTextInfo(position)
@@ -102,7 +100,7 @@ def quickNavRapping(self,gesture, itemType, direction, errorMessage, readUnit):
 	try:
 		item = next(iterFactory(direction, self.selection))
 	except NotImplementedError:
-		# Translators: a message when a particular quick nav command is not supported in the current document.
+		# Translators: Mensaje que indica que no se soporta en el documento
 		message(_('No soportado en este documento'))
 		return
 	except StopIteration:
@@ -123,7 +121,6 @@ def quickNavRapping(self,gesture, itemType, direction, errorMessage, readUnit):
 isActivated = config.conf['chromeconfig']['isActive']
 if isActivated: BrowseModeTreeInterceptor._quickNavScript = quickNavRapping
 
-# Function taken from the Mozilla add-on to simulate mouse clicks
 def mouseClick(obj, button="left"):
 	api.moveMouseToNVDAObject(obj)
 	api.setMouseObject(obj)
@@ -134,7 +131,6 @@ def mouseClick(obj, button="left"):
 		winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTDOWN,0,0,None,None)
 		winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTUP,0,0,None,None)
 
-# Function taken from the Mozilla add-on to search objects
 def searchObject(path):
 	obj = api.getForegroundObject()
 	for milestone in path:
@@ -143,7 +139,6 @@ def searchObject(path):
 			return
 	return obj
 
-# Function taken from the Mozilla add-on to search objects
 def searchAmongTheChildren(id, into):
 	if not into:
 		return(None)
@@ -159,7 +154,6 @@ def searchAmongTheChildren(id, into):
 		obj = obj.next
 	return(obj)
 
-# Function taken from the add-on emoticons to center the window
 def _calculatePosition(width, height):
 	w = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_X)
 	h = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_Y)
@@ -172,7 +166,12 @@ def _calculatePosition(width, height):
 	return (x, y)
 
 class AppModule(appModuleHandler.AppModule):
-	@script(gesture="kb:NVDA+F6", description= _("Displays the list of tabs"), category= _("Chrome Utilities"))
+	@script(
+		gesture="kb:NVDA+F6",
+		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		description= _("Muestra dialogo de pestañas"),
+		# Translators: Nombre complemento y categoría
+		category= _("Utilidades Chrome"))
 	def script_chromeTab(self, gesture):
 		lista = []
 		chromeObj = api.getForegroundObject()
@@ -200,7 +199,12 @@ class AppModule(appModuleHandler.AppModule):
 		gui.mainFrame.prePopup()
 		self._TabDialog.Show()
 
-	@script(gesture="kb:F7", description= _("Displays a menu with the history of visited pages backwards"), category= _("Chrome Utilities"))
+	@script(
+		gesture="kb:F7",
+		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		description= _("Muestra el historial atrás"),
+		# Translators: Nombre complemento y categoría
+		category= _("Utilidades Chrome"))
 	def script_chromeback(self, gesture):
 		atrasBTN = (
 			("class","NonClientView"),
@@ -212,11 +216,11 @@ class AppModule(appModuleHandler.AppModule):
 			try:
 				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(0)
 			except AttributeError:
-				# Translators: Message indicating that the button was not found
+				# Translators: Mensaje indicando que no existe el botón
 				message(_("El botón no existe"))
 				return
 		if obj.isFocusable == False:
-			# Translators: Message indicating no history
+			# Translators: Mensaje que indica que no hay historial
 			message(_("No hay historial para mostrar"))
 		else:
 			mouseClick(obj, "right")
@@ -231,24 +235,28 @@ class AppModule(appModuleHandler.AppModule):
 			else:
 				api.setNavigatorObject(objRot)
 
-
-	@script(gesture="kb:F8", description= _("Displays a menu with the history of visited pages forward"), category= _("Chrome Utilities"))
+	@script(
+		gesture="kb:F8",
+		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		description= _("Muestra el historial adelante"),
+		# Translators: Nombre complemento y categoría
+		category= _("Utilidades Chrome"))
 	def script_chromenext(self, gesture):
-		atrasBTN = (
+		adelanteBTN = (
 			("class","NonClientView"),
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","ToolbarView"))
-		obj = searchObject(atrasBTN).getChild(1)
+		obj = searchObject(adelanteBTN).getChild(1)
 		if obj == None:
 			try:
 				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(1)
 			except AttributeError:
-				# Translators: Message indicating that the button was not found
+				# Translators: Mensaje indicando que no existe el botón
 				message(_("El botón no existe"))
 				return
 		if obj.isFocusable == False:
-			# Translators: Message indicating no history
+			# Translators: Mensaje que indica que no hay historial
 			message(_("No hay historial para mostrar"))
 		else:
 			mouseClick(obj, "right")
@@ -263,7 +271,12 @@ class AppModule(appModuleHandler.AppModule):
 			else:
 				api.setNavigatorObject(objRot)
 
-	@script(gesture="kb:F9", description= _("Activates and deactivates the reading mode"), category= _("Chrome Utilities"))
+	@script(
+		gesture="kb:F9",
+		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		description= _("Activa y desactiva modo lectura"),
+		# Translators: Nombre complemento y categoría
+		category= _("Utilidades Chrome"))
 	def script_chromeReader(self, gesture):
 		path = (
 			("class","NonClientView"),
@@ -276,20 +289,20 @@ class AppModule(appModuleHandler.AppModule):
 		obj = searchObject(path)
 		if obj:
 			if obj.isFocusable == False:
-				# Translators: Indicates with a message that read mode is not available
+				# Translators: Mensaje que indica que no hay modo lectura
 				message(_("Modo lectura no disponible"))
 			else:
 				try:
 					if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
-						# Translators: Indicates with a message that we are leaving the reading mode
+						# Translators: Mensaje indicando que se desactiva el modo lectura
 						message(_("Desactivando modo lectura..."))
 						time.sleep(0.5)
 					else:
-						# Translators: Indicates with a message that we are entering reading mode
+						# Translators: Mensaje indicando que se activa el modo lectura
 						message(_("Activando modo lectura..."))
 						time.sleep(0.5)
 				except:
-					# Translators: Indicates with a message that we are entering reading mode
+					# Translators: Mensaje indicando que se activa el modo lectura
 					message(_("Activando modo lectura..."))
 					time.sleep(0.5)
 				api.setNavigatorObject(obj)
@@ -299,15 +312,26 @@ class AppModule(appModuleHandler.AppModule):
 					mouseClick(obj, "left")
 				cancelSpeech()
 
-	@script(gesture="kb:shift+f9", description= _("Read the result in read mode"), category= _("Chrome Utilities"))
+	@script(
+		gesture="kb:shift+f9",
+		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		description= _("Leer el resultado en modo lectura"),
+		# Translators: Nombre complemento y categoría
+		category= _("Utilidades Chrome"))
 	def script_modeReaderSpeak(self, gesture):
 		try:
 			if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
 				readText(CURSOR_CARET)
 		except:
+			# Translators: Mensaje que indica que no estamos en modo lectura
 			message(_("No esta en modo lectura"))
 
-	@script(gesture="kb:shift+f4", description= _("Modo ciclico"), category= _("Chrome Utilities"))
+	@script(
+		gesture="kb:shift+f4",
+		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		description= _("Activar y desactivar navegación cíclica"),
+		# Translators: Nombre complemento y categoría
+		category= _("Utilidades Chrome"))
 	def script_ciclicoChrome(self, gesture):
 		global oldQuickNav, isActivated
 
@@ -316,7 +340,7 @@ class AppModule(appModuleHandler.AppModule):
 			config.conf['chromeconfig']['isActive'] = False
 			isActivated = config.conf['chromeconfig']['isActive']
 			message(
-					# Translators: Text spoken when screen rapping is turned off.
+					# Translators: Mensaje que anuncia la desactivación de la navegación cíclica
 					_('Navegación cíclica desactivada.'))
 			beep(100,150)
 		else:
@@ -324,18 +348,18 @@ class AppModule(appModuleHandler.AppModule):
 			config.conf['chromeconfig']['isActive'] = True
 			isActivated = config.conf['chromeconfig']['isActive']
 			message(
-					# Translators: Text spoken when screen rapping is turned on.
+					# Translators: Mensaje que anuncia la activación de la navegación cíclica
 					_('Navegación cíclica activada.'))
 			beep(400,150)
 
-
 class TabDialog(wx.Dialog):
 	def __init__(self, parent, lista, chromeObj):
+
 		WIDTH = 800
 		HEIGHT = 600
 		pos = _calculatePosition(WIDTH, HEIGHT)
 
-		# Translators: Title of the Tab List dialog box
+		# Translators: Titulo de la ventana de dialogo de pestañas
 		super(TabDialog, self).__init__(parent, -1, title=_("Lista de pestañas"), pos = pos, size = (WIDTH, HEIGHT))
 
 		self.lista = lista
@@ -350,19 +374,19 @@ class TabDialog(wx.Dialog):
 		self.myListBox.Bind(wx.EVT_KEY_UP, self.SelectListbox)
 		self.Bind(wx.EVT_ACTIVATE, self.onExit)
 
-		# Translators: A button on the list dialog to perform left mouse click.
+		# Translators: Nombre para el botón clic izquierdo
 		self.clicLeftBTN = wx.Button(self.Panel, wx.ID_ANY, _("Clic en botón &Izquierdo"))
 		self.Bind(wx.EVT_BUTTON, self.clicLeft, self.clicLeftBTN)
 
-		# Translators: A button in the list dialog to perform right mouse click.
+		# Translators: Nombre para el botón clic derecho
 		self.clicRightBTN = wx.Button(self.Panel, wx.ID_ANY, _("Clic en botón &Derecho"))
 		self.Bind(wx.EVT_BUTTON, self.clicRight, self.clicRightBTN)
 
-		# Translators: New Tab Button Name
+		# Translators: Nombre para el botón nueva pestaña
 		self.clicNewTabBTN = wx.Button(self.Panel, wx.ID_ANY, _("&Nueva pestaña"))
 		self.Bind(wx.EVT_BUTTON, self.clicNewTab, self.clicNewTabBTN)
 
-		# Translators: Exit button name
+		# Translators: Nombre para el botón cerrar
 		self.closeBTN = wx.Button(self.Panel, wx.ID_CANCEL, _("&Cerrar"))
 		self.Bind(wx.EVT_BUTTON, self.onExit, id=wx.ID_CANCEL)
 

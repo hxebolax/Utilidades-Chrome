@@ -25,7 +25,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("""Pequeños scripts para mejorar el uso del navegador Chrome."""),
 	# version
-	"addon_version": "0.6",
+	"addon_version": "dev20210113",
 	# Author(s)
 	"addon_author": u"Héctor J. Benítez Corredera <xebolax@gmail.com>",
 	# URL for the add-on documentation support
