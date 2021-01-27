@@ -1,0 +1,117 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: وفيق <wafiqtaher@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Muestra dialogo de pestañas"
+msgstr "إظهار مربع حوار علامة التبويب"
+
+msgid "Muestra el historial atrás"
+msgstr "عرض التاريخالسابق"
+
+msgid "Utilidades Chrome"
+msgstr "تحسينات لمتصفح  كروم"
+
+msgid "El botón no existe"
+msgstr "الزر غير موجود"
+
+msgid "No hay historial para mostrar"
+msgstr "لا يوجد تاريخ للعرض"
+
+msgid "Muestra el historial adelante"
+msgstr "عرض التاريخ التالي"
+
+msgid "Activa y desactiva modo lectura"
+msgstr "تنشيط وتعطيل وضع القراءة"
+
+msgid "Modo lectura no disponible"
+msgstr "وضع القراءة غير متاح"
+
+msgid "Desactivando modo lectura..."
+msgstr "جارٍ تعطيل وضع القراءة ..."
+
+msgid "Activando modo lectura..."
+msgstr "جارٍ تنشيط وضع القراءة ..."
+
+msgid "Leer el resultado en modo lectura"
+msgstr "اقرأ النتيجة في وضع القراءة"
+
+msgid "No esta en modo lectura"
+msgstr "ليس في وضع القراءة"
+
+msgid "Activar y desactivar navegación cíclica"
+msgstr "تنشيط وإلغاء التنشيط للتصفح الدائري"
+
+msgid "Lista de pestañas"
+msgstr "قائمة الجدولة"
+
+msgid "Clic en botón &Izquierdo"
+msgstr "انقر فوق الزر الي&سار"
+
+msgid "Clic en botón &Derecho"
+msgstr "انقر فوق الزر الي&مين"
+
+msgid "&Nueva pestaña"
+msgstr "&علامة تبويب جديدة"
+
+msgid "&Cerrar"
+msgstr "ا&غلاق"
+
+msgid "Foco al inicio"
+msgstr "التركيز عند بدء التشغيل"
+
+msgid "Foco al final"
+msgstr "التركيز في النهاية"
+
+msgid "No hay controles en la pagina."
+msgstr "لا توجد ضوابط على الصفحة."
+
+msgid "No soportado en este documento"
+msgstr "غير مدعوم في هذا المستند"
+
+msgid "Navegación cíclica desactivada."
+msgstr "التنقل الدوري معطّل."
+
+msgid "Navegación cíclica activada."
+msgstr "تم تفعيل التنقل الدائري"
+
+#~ msgid "Muestra dialogo de pestaÃ±as"
+#~ msgstr "إظهار مربع حوار لعلامات  التبويب"
+
+#~ msgid "Muestra el historial atrÃ¡s"
+#~ msgstr "اعرض التاريخ"
+
+#~ msgid "El botÃ³n no existe"
+#~ msgstr "الزر غير موجود"
+
+#~ msgid "Activar y desactivar navegaciÃ³n cÃ­clica"
+#~ msgstr "تنشيط وإلغاء تنشيط التصفح الدائري"
+
+#~ msgid "Lista de pestaÃ±as"
+#~ msgstr "قائمة علامات التبويب"
+
+#~ msgid "Clic en botÃ³n &Izquierdo"
+#~ msgstr "انقر فوق الزر الأي&سر"
+
+#~ msgid "Clic en botÃ³n &Derecho"
+#~ msgstr "انقر فوق الزر ال&يمين"
+
+#~ msgid "&Nueva pestaÃ±a"
+#~ msgstr "& علامة تبويب جديدة"
+
+#~ msgid "NavegaciÃ³n cÃ­clica desactivada."
+#~ msgstr "التنقلبالحركة الدائرية معطل"
+
+#~ msgid "NavegaciÃ³n cÃ­clica activada."
+#~ msgstr "تم تفعيل التنقل العالمي"

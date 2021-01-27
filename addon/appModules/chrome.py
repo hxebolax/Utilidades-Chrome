@@ -36,11 +36,6 @@ from scriptHandler import willSayAllResume
 # Línea para definir la traducción
 addonHandler.initTranslation()
 
-confspec = {'isActive':'boolean(default=True)'}
-config.conf.spec['chromeconfig'] = confspec
-
-oldQuickNav = BrowseModeTreeInterceptor._quickNavScript
-
 # Translators: Texto que avisa cuando se desplaza al inicio
 msgrpTop = _('Foco al inicio')
 # Translators: Texto que avisa cuando se desplaza al final
@@ -96,30 +91,49 @@ def screenRapping(self,itemType,readUnit,msg,rpTo,tone=(500,80),reverse='previou
 		pass
 
 def quickNavRapping(self,gesture, itemType, direction, errorMessage, readUnit):
-	iterFactory = initNavItemsGenerator(self,itemType)
-	try:
-		item = next(iterFactory(direction, self.selection))
-	except NotImplementedError:
-		# Translators: Mensaje que indica que no se soporta en el documento
-		message(_('No soportado en este documento'))
-		return
-	except StopIteration:
-		if direction == 'next':
-			lastPos = getCurrentPos(self)
-			if not screenRapping(self,itemType,readUnit,msgrpTop,rpTo=textInfos.POSITION_FIRST):
-				resetPosition(self,lastPos,itemType)
+	if api.getForegroundObject().appModule.productName == "Google Chrome":
+		iterFactory = initNavItemsGenerator(self,itemType)
+		try:
+			item = next(iterFactory(direction, self.selection))
+		except NotImplementedError:
+			# Translators: Mensaje que indica que no se soporta en el documento
+			message(_('No soportado en este documento'))
+			return
+		except StopIteration:
+			if direction == 'next':
+				lastPos = getCurrentPos(self)
+				if not screenRapping(self,itemType,readUnit,msgrpTop,rpTo=textInfos.POSITION_FIRST):
+					resetPosition(self,lastPos,itemType)
+			else:
+				lastPos = getCurrentPos(self)
+				if not screenRapping(self,itemType,readUnit,msgrpBottom,rpTo=textInfos.POSITION_LAST,tone=(100,80),reverse='next',direction='previous'):
+					resetPosition(self,lastPos,itemType)
+			return
+
+		item	.moveTo()
+		if not gesture or not willSayAllResume(gesture):
+			item.report(readUnit=readUnit)
+	else:
+		if itemType=="notLinkBlock":
+			iterFactory=self._iterNotLinkBlock
 		else:
-			lastPos = getCurrentPos(self)
-			if not screenRapping(self,itemType,readUnit,msgrpBottom,rpTo=textInfos.POSITION_LAST,tone=(100,80),reverse='next',direction='previous'):
-				resetPosition(self,lastPos,itemType)
-		return
-
-	item	.moveTo()
-	if not gesture or not willSayAllResume(gesture):
-		item.report(readUnit=readUnit)
-
-isActivated = config.conf['chromeconfig']['isActive']
-if isActivated: BrowseModeTreeInterceptor._quickNavScript = quickNavRapping
+			iterFactory=lambda direction,info: self._iterNodesByType(itemType,direction,info)
+		info=self.selection
+		try:
+			item = next(iterFactory(direction, info))
+		except NotImplementedError:
+			# Translators: a message when a particular quick nav command is not supported in the current document.
+			message(_("No soportado en este documento"))
+			return
+		except StopIteration:
+			message(errorMessage)
+			return
+		# #8831: Report before moving because moving might change the focus, which
+		# might mutate the document, potentially invalidating info if it is
+		# offset-based.
+		if not gesture or not willSayAllResume(gesture):
+			item.report(readUnit=readUnit)
+		item.moveTo()
 
 def mouseClick(obj, button="left"):
 	api.moveMouseToNVDAObject(obj)
@@ -166,10 +180,28 @@ def _calculatePosition(width, height):
 	return (x, y)
 
 class AppModule(appModuleHandler.AppModule):
+	def __init__(self, *args, **kwargs):
+		super(AppModule, self).__init__(*args, **kwargs)
+
+		confspec = {'isActive':'boolean(default=True)'}
+		config.conf.spec['chromeconfig'] = confspec
+
+		self.oldQuickNav = BrowseModeTreeInterceptor._quickNavScript
+
+		self.isActivated = config.conf['chromeconfig']['isActive']
+		if self.isActivated: BrowseModeTreeInterceptor._quickNavScript = quickNavRapping
+
+	def terminate(self):
+		try:
+			if self.isActivated:
+				BrowseModeTreeInterceptor._quickNavScript = self.oldQuickNav
+		except:
+			pass
+
 	@script(
 		gesture="kb:NVDA+F6",
-		# Translators: Descripción del elemento en el dialogo de gestos de entrada
-		description= _("Muestra dialogo de pestañas"),
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _("Muestra diálogo de pestañas"),
 		# Translators: Nombre complemento y categoría
 		category= _("Utilidades Chrome"))
 	def script_chromeTab(self, gesture):
@@ -201,7 +233,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	@script(
 		gesture="kb:F7",
-		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _("Muestra el historial atrás"),
 		# Translators: Nombre complemento y categoría
 		category= _("Utilidades Chrome"))
@@ -237,7 +269,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	@script(
 		gesture="kb:F8",
-		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _("Muestra el historial adelante"),
 		# Translators: Nombre complemento y categoría
 		category= _("Utilidades Chrome"))
@@ -273,7 +305,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	@script(
 		gesture="kb:F9",
-		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _("Activa y desactiva modo lectura"),
 		# Translators: Nombre complemento y categoría
 		category= _("Utilidades Chrome"))
@@ -314,7 +346,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	@script(
 		gesture="kb:shift+f9",
-		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _("Leer el resultado en modo lectura"),
 		# Translators: Nombre complemento y categoría
 		category= _("Utilidades Chrome"))
@@ -328,29 +360,29 @@ class AppModule(appModuleHandler.AppModule):
 
 	@script(
 		gesture="kb:shift+f4",
-		# Translators: Descripción del elemento en el dialogo de gestos de entrada
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _("Activar y desactivar navegación cíclica"),
 		# Translators: Nombre complemento y categoría
 		category= _("Utilidades Chrome"))
 	def script_ciclicoChrome(self, gesture):
-		global oldQuickNav, isActivated
+		if self.productName == "Google Chrome":
 
-		if isActivated:
-			BrowseModeTreeInterceptor._quickNavScript = oldQuickNav
-			config.conf['chromeconfig']['isActive'] = False
-			isActivated = config.conf['chromeconfig']['isActive']
-			message(
-					# Translators: Mensaje que anuncia la desactivación de la navegación cíclica
-					_('Navegación cíclica desactivada.'))
-			beep(100,150)
-		else:
-			BrowseModeTreeInterceptor._quickNavScript = quickNavRapping
-			config.conf['chromeconfig']['isActive'] = True
-			isActivated = config.conf['chromeconfig']['isActive']
-			message(
-					# Translators: Mensaje que anuncia la activación de la navegación cíclica
-					_('Navegación cíclica activada.'))
-			beep(400,150)
+			if self.isActivated:
+				BrowseModeTreeInterceptor._quickNavScript = self.oldQuickNav
+				config.conf['chromeconfig']['isActive'] = False
+				self.isActivated = config.conf['chromeconfig']['isActive']
+				message(
+						# Translators: Mensaje que anuncia la desactivación de la navegación cíclica
+						_('Navegación cíclica desactivada.'))
+				beep(100,150)
+			else:
+				BrowseModeTreeInterceptor._quickNavScript = quickNavRapping
+				config.conf['chromeconfig']['isActive'] = True
+				self.isActivated = config.conf['chromeconfig']['isActive']
+				message(
+						# Translators: Mensaje que anuncia la activación de la navegación cíclica
+						_('Navegación cíclica activada.'))
+				beep(400,150)
 
 class TabDialog(wx.Dialog):
 	def __init__(self, parent, lista, chromeObj):
@@ -359,7 +391,7 @@ class TabDialog(wx.Dialog):
 		HEIGHT = 600
 		pos = _calculatePosition(WIDTH, HEIGHT)
 
-		# Translators: Titulo de la ventana de dialogo de pestañas
+		# Translators: Titulo de la ventana de diálogo de pestañas
 		super(TabDialog, self).__init__(parent, -1, title=_("Lista de pestañas"), pos = pos, size = (WIDTH, HEIGHT))
 
 		self.lista = lista
