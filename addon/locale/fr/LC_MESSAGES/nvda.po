@@ -7,143 +7,149 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'ChromeUtilities' 'dev20210113'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2021-01-14 13:44+0100\n"
-"PO-Revision-Date: 2021-01-14 14:37+0100\n"
+"POT-Creation-Date: 2021-02-28 12:32+0100\n"
+"PO-Revision-Date: 2021-03-01 09:57+0100\n"
 "Last-Translator: Rémy Ruiz <remyruiz@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 1.7.7\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: Texto que avisa cuando se desplaza al inicio
-#: addon\appModules\chrome.py:45
+#: addon\appModules\chrome.py:49
 msgid "Foco al inicio"
 msgstr "Focus au début"
 
 #. Translators: Texto que avisa cuando se desplaza al final
-#: addon\appModules\chrome.py:47
+#: addon\appModules\chrome.py:51
 msgid "Foco al final"
 msgstr "Focus à la fin"
 
 #. translators: Mensaje que avisa la falta de controles
-#: addon\appModules\chrome.py:67
+#: addon\appModules\chrome.py:71
 msgid "No hay controles en la pagina."
 msgstr "Il n'y a pas de contrôle sur la page."
 
 #. Translators: Mensaje que indica que no se soporta en el documento
-#: addon\appModules\chrome.py:104
+#. Translators: a message when a particular quick nav command is not supported in the current document.
+#: addon\appModules\chrome.py:109 addon\appModules\chrome.py:135
 msgid "No soportado en este documento"
 msgstr "Non pris en charge dans ce document"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:172
+#: addon\appModules\chrome.py:219
 msgid "Muestra diálogo de pestañas"
 msgstr "Affiche le dialogue des onglets"
 
 #. Translators: Nombre complemento y categoría
+#. TRANSLATORS: title for the Update Channel settings category
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
 #. to be shown on installation and add-on information found in Add-ons Manager.
-#: addon\appModules\chrome.py:174 addon\appModules\chrome.py:207
-#: addon\appModules\chrome.py:243 addon\appModules\chrome.py:279
-#: addon\appModules\chrome.py:320 addon\appModules\chrome.py:334
-#: buildVars.py:23
+#: addon\appModules\chrome.py:221 addon\appModules\chrome.py:267
+#: addon\appModules\chrome.py:303 addon\appModules\chrome.py:339
+#: addon\appModules\chrome.py:380 addon\appModules\chrome.py:394
+#: addon\appModules\chrome.py:567 buildVars.py:23
 msgid "Utilidades Chrome"
 msgstr "Utilitaires Chrome"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:205
+#: addon\appModules\chrome.py:265
 msgid "Muestra el historial atrás"
 msgstr "Affiche l'historique en arrière"
 
 #. Translators: Mensaje indicando que no existe el botón
-#: addon\appModules\chrome.py:220 addon\appModules\chrome.py:256
+#: addon\appModules\chrome.py:280 addon\appModules\chrome.py:316
 msgid "El botón no existe"
 msgstr "Le bouton n'existe pas"
 
 #. Translators: Mensaje que indica que no hay historial
-#: addon\appModules\chrome.py:224 addon\appModules\chrome.py:260
+#: addon\appModules\chrome.py:284 addon\appModules\chrome.py:320
 msgid "No hay historial para mostrar"
 msgstr "Aucun historique à afficher"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:241
+#: addon\appModules\chrome.py:301
 msgid "Muestra el historial adelante"
 msgstr "Affiche l'historique en avant"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:277
+#: addon\appModules\chrome.py:337
 msgid "Activa y desactiva modo lectura"
 msgstr "Activer et désactiver le mode lecture"
 
 #. Translators: Mensaje que indica que no hay modo lectura
-#: addon\appModules\chrome.py:293
+#: addon\appModules\chrome.py:353
 msgid "Modo lectura no disponible"
 msgstr "Mode lecture non disponible"
 
 #. Translators: Mensaje indicando que se desactiva el modo lectura
-#: addon\appModules\chrome.py:298
+#: addon\appModules\chrome.py:358
 msgid "Desactivando modo lectura..."
 msgstr "Désactivation du mode lecture en cours..."
 
 #. Translators: Mensaje indicando que se activa el modo lectura
-#: addon\appModules\chrome.py:302 addon\appModules\chrome.py:306
+#: addon\appModules\chrome.py:362 addon\appModules\chrome.py:366
 msgid "Activando modo lectura..."
 msgstr "Activation du mode lecture en cours..."
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:318
+#: addon\appModules\chrome.py:378
 msgid "Leer el resultado en modo lectura"
 msgstr "Lire le résultat en mode lecture"
 
 #. Translators: Mensaje que indica que no estamos en modo lectura
-#: addon\appModules\chrome.py:327
+#: addon\appModules\chrome.py:387
 msgid "No esta en modo lectura"
 msgstr "Vous n'êtes pas en mode lecture"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:332
+#: addon\appModules\chrome.py:392
 msgid "Activar y desactivar navegación cíclica"
 msgstr "Activer et désactiver la navigation cyclique"
 
 #. Translators: Mensaje que anuncia la desactivación de la navegación cíclica
-#: addon\appModules\chrome.py:344
+#: addon\appModules\chrome.py:404
 msgid "Navegación cíclica desactivada."
 msgstr "Navigation cyclique désactivée."
 
 #. Translators: Mensaje que anuncia la activación de la navegación cíclica
-#: addon\appModules\chrome.py:352
+#: addon\appModules\chrome.py:412
 msgid "Navegación cíclica activada."
 msgstr "Navigation cyclique activée."
 
 #. Translators: Titulo de la ventana de diálogo de pestañas
-#: addon\appModules\chrome.py:363
+#: addon\appModules\chrome.py:423
 msgid "Lista de pestañas"
 msgstr "Liste des onglets"
 
 #. Translators: Nombre para el botón clic izquierdo
-#: addon\appModules\chrome.py:378
+#: addon\appModules\chrome.py:438
 msgid "Clic en botón &Izquierdo"
 msgstr "Cliquer sur le bouton &gauche"
 
 #. Translators: Nombre para el botón clic derecho
-#: addon\appModules\chrome.py:382
+#: addon\appModules\chrome.py:442
 msgid "Clic en botón &Derecho"
 msgstr "Cliquer sur le bouton &droit"
 
 #. Translators: Nombre para el botón nueva pestaña
-#: addon\appModules\chrome.py:386
+#: addon\appModules\chrome.py:446
 msgid "&Nueva pestaña"
 msgstr "&Nouvel onglet"
 
 #. Translators: Nombre para el botón cerrar
-#: addon\appModules\chrome.py:390
+#: addon\appModules\chrome.py:450
 msgid "&Cerrar"
 msgstr "&Fermer"
+
+#: addon\appModules\chrome.py:572
+msgid "Abrir las ventanas de Chrome maximizadas"
+msgstr "Ouvrir les fenêtres de Chrome maximisées"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager

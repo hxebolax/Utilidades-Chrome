@@ -21,6 +21,7 @@ import wx
 import re
 import time
 import winUser
+import ctypes
 from scriptHandler import script, executeScript
 from globalCommands import commands
 from sayAllHandler import readText, CURSOR_CARET
@@ -32,9 +33,17 @@ from ui import message
 from tones import beep
 from speech import cancelSpeech, speak
 from scriptHandler import willSayAllResume
+from gui import guiHelper, nvdaControls
+from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
 
 # Línea para definir la traducción
 addonHandler.initTranslation()
+
+confspec = {
+	'isActive':'boolean(default=False)',
+	"maximizar": "boolean(default=False)",
+}
+config.conf.spec['chromeconfig'] = confspec
 
 # Translators: Texto que avisa cuando se desplaza al inicio
 msgrpTop = _('Foco al inicio')
@@ -59,7 +68,7 @@ def resetPosition(self, positionNumber,itemType):
 	itemText = '{}s'.format(itemType) if itemType[-1] != 'x' else '{}es'.format(itemType)
 	message(
 			# translators: Mensaje que avisa la falta de controles
-			_('No hay controles en la pagina.'))
+			_('No hay controles en la página.'))
 
 def updatePosition(obj,position):
 	objPos = obj.makeTextInfo(position)
@@ -183,16 +192,22 @@ class AppModule(appModuleHandler.AppModule):
 	def __init__(self, *args, **kwargs):
 		super(AppModule, self).__init__(*args, **kwargs)
 
-		confspec = {'isActive':'boolean(default=True)'}
-		config.conf.spec['chromeconfig'] = confspec
+		# Mirar sustituir por shellapi.ShellExecute
+		if config.conf["chromeconfig"]["maximizar"]:
+			user32 = ctypes.WinDLL('user32')
+			hWnd = user32.GetForegroundWindow()
+			user32.ShowWindow(hWnd, 3)
 
 		self.oldQuickNav = BrowseModeTreeInterceptor._quickNavScript
 
 		self.isActivated = config.conf['chromeconfig']['isActive']
 		if self.isActivated: BrowseModeTreeInterceptor._quickNavScript = quickNavRapping
 
+		NVDASettingsDialog.categoryClasses.append(ChromePanel)
+
 	def terminate(self):
 		try:
+			NVDASettingsDialog.categoryClasses.remove(ChromePanel)
 			if self.isActivated:
 				BrowseModeTreeInterceptor._quickNavScript = self.oldQuickNav
 		except:
@@ -214,7 +229,20 @@ class AppModule(appModuleHandler.AppModule):
 			("class","TopContainerView"),
 			("class","TabStripRegionView"),
 			("class","TabStrip"))
-		obj = searchObject(pestañasTab).firstChild
+		try:
+			obj = searchObject(pestañasTab).firstChild
+		except:
+			# Variable para Chrome 90
+			pestañasTab = (
+				("class","NonClientView"),
+				("class","BrowserView"),
+				("class","TopContainerView"),
+				("class","TabStripRegionView"),
+				("class","ScrollView"),
+				("class", "ScrollView\\:\\:Viewport"),
+				("class","TabStrip"))
+			obj = searchObject(pestañasTab).firstChild
+
 		if obj == None: # Antigua manera apuntando directamente al objeto
 			obj = chromeObj.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).firstChild
 
@@ -533,3 +561,17 @@ class TabDialog(wx.Dialog):
 			self.Destroy()
 			gui.mainFrame.postPopup()
 		event.Skip()
+
+class ChromePanel(SettingsPanel):
+	#TRANSLATORS: title for the Update Channel settings category
+	title=_("Utilidades Chrome")
+
+	def makeSettings(self, sizer):
+		helper=guiHelper.BoxSizerHelper(self, sizer=sizer)
+
+		self.chromeCheckBoxMaximize = helper.addItem(wx.CheckBox(self, label=_("Abrir las ventanas de Chrome maximizadas")))
+		self.chromeCheckBoxMaximize.Value = config.conf["chromeconfig"]["maximizar"]
+
+	def onSave(self):
+		maxWinChrome = config.conf["chromeconfig"]["maximizar"]
+		config.conf["chromeconfig"]["maximizar"] = self.chromeCheckBoxMaximize.Value
