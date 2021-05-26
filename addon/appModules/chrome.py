@@ -24,7 +24,11 @@ import winUser
 import ctypes
 from scriptHandler import script, executeScript
 from globalCommands import commands
-from sayAllHandler import readText, CURSOR_CARET
+try:
+	from sayAllHandler import readText, CURSOR_CARET
+except:
+	from speech.sayAll import CURSOR # .CARET
+	from speech.sayAll import SayAllHandler  # readText
 from globalPluginHandler import GlobalPlugin
 from browseMode import BrowseModeTreeInterceptor
 from core import callLater
@@ -381,7 +385,10 @@ class AppModule(appModuleHandler.AppModule):
 	def script_modeReaderSpeak(self, gesture):
 		try:
 			if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
-				readText(CURSOR_CARET)
+				try:
+					readText(CURSOR_CARET)
+				except:
+					SayAllHandler.readText(CURSOR.CARET)
 		except:
 			# Translators: Mensaje que indica que no estamos en modo lectura
 			message(_("No esta en modo lectura"))
