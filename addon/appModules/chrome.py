@@ -228,7 +228,9 @@ class AppModule(appModuleHandler.AppModule):
 		chromeObj = api.getForegroundObject()
 		# Buscar pestañas.
 		pestañasTab = (
+			("class","BrowserRootView"),
 			("class","NonClientView"),
+			("class","GlassBrowserFrameView"),
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","TabStripRegionView"),
@@ -236,19 +238,7 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			obj = searchObject(pestañasTab).firstChild
 		except:
-			# Variable para Chrome 90
-			pestañasTab = (
-				("class","NonClientView"),
-				("class","BrowserView"),
-				("class","TopContainerView"),
-				("class","TabStripRegionView"),
-				("class","ScrollView"),
-				("class", "ScrollView\\:\\:Viewport"),
-				("class","TabStrip"))
-			obj = searchObject(pestañasTab).firstChild
-
-		if obj == None: # Antigua manera apuntando directamente al objeto
-			obj = chromeObj.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).firstChild
+			obj = chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).firstChild
 
 		while obj:
 			if hasattr(obj, "IA2Attributes") and "class" in obj.IA2Attributes and obj.IA2Attributes["class"] == None:
@@ -272,9 +262,11 @@ class AppModule(appModuleHandler.AppModule):
 	def script_chromeback(self, gesture):
 		atrasBTN = (
 			("class","NonClientView"),
+			("class","GlassBrowserFrameView"),
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","ToolbarView"))
+
 		obj = searchObject(atrasBTN).getChild(0)
 		if obj == None:
 			try:
@@ -288,16 +280,7 @@ class AppModule(appModuleHandler.AppModule):
 			message(_("No hay historial para mostrar"))
 		else:
 			mouseClick(obj, "right")
-			webRoot = (
-				("class","NonClientView"),
-				("class","BrowserView"),
-				("class","View"),
-				("tag","#document"))
-			objRot = searchObject(webRoot)
-			if objRot == None:
-				api.setNavigatorObject(api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1))
-			else:
-				api.setNavigatorObject(objRot)
+			api.setNavigatorObject(api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0))
 
 	@script(
 		gesture="kb:F8",
@@ -308,6 +291,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_chromenext(self, gesture):
 		adelanteBTN = (
 			("class","NonClientView"),
+			("class","GlassBrowserFrameView"),
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","ToolbarView"))
@@ -324,16 +308,7 @@ class AppModule(appModuleHandler.AppModule):
 			message(_("No hay historial para mostrar"))
 		else:
 			mouseClick(obj, "right")
-			webRoot = (
-				("class","NonClientView"),
-				("class","BrowserView"),
-				("class","View"),
-				("tag","#document"))
-			objRot = searchObject(webRoot)
-			if objRot == None:
-				api.setNavigatorObject(api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1))
-			else:
-				api.setNavigatorObject(objRot)
+			api.setNavigatorObject(api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0))
 
 	@script(
 		gesture="kb:F9",
@@ -344,6 +319,7 @@ class AppModule(appModuleHandler.AppModule):
 	def script_chromeReader(self, gesture):
 		path = (
 			("class","NonClientView"),
+			("class","GlassBrowserFrameView"),
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","ToolbarView"),
@@ -357,7 +333,7 @@ class AppModule(appModuleHandler.AppModule):
 				message(_("Modo lectura no disponible"))
 			else:
 				try:
-					if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+					if api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
 						# Translators: Mensaje indicando que se desactiva el modo lectura
 						message(_("Desactivando modo lectura..."))
 						time.sleep(0.5)
@@ -384,7 +360,7 @@ class AppModule(appModuleHandler.AppModule):
 		category= _("Utilidades Chrome"))
 	def script_modeReaderSpeak(self, gesture):
 		try:
-			if api.getForegroundObject().getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+			if api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
 				try:
 					readText(CURSOR_CARET)
 				except:
@@ -487,75 +463,20 @@ class TabDialog(wx.Dialog):
 
 	def clicLeft(self, event):
 		indice = self.myListBox.GetSelection()
-		clic = (
-			("class","NonClientView"),
-			("class","BrowserView"),
-			("class","TopContainerView"),
-			("class","TabStripRegionView"),
-			("class","TabStrip"))
-		objeto = self.searchObject(clic, self.chromeObj, indice)
-		if objeto == None:
-			objeto = self.chromeObj.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
 		mouseClick(objeto, "left")
-		webRoot = (
-			("class","NonClientView"),
-			("class","BrowserView"),
-			("class","View"),
-			("tag","#document"))
-		objRot = self.searchObject(webRoot, self.chromeObj)
-		if objRot == None:
-			api.setNavigatorObject(self.chromeObj.getChild(0).getChild(1).getChild(1).getChild(1))
-		else:
-			api.setNavigatorObject(objRot)
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
 	def clicRight(self, event):
 		indice = self.myListBox.GetSelection()
-		clic = (
-			("class","NonClientView"),
-			("class","BrowserView"),
-			("class","TopContainerView"),
-			("class","TabStripRegionView"),
-			("class","TabStrip"))
-		objeto = self.searchObject(clic, self.chromeObj, indice)
-		if objeto == None:
-			objeto = self.chromeObj.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
 		mouseClick(objeto, "right")
-		webRoot = (
-			("class","NonClientView"),
-			("class","BrowserView"),
-			("class","View"),
-			("tag","#document"))
-		objRot = self.searchObject(webRoot, self.chromeObj)
-		if objRot == None:
-			api.setNavigatorObject(self.chromeObj.getChild(0).getChild(1).getChild(1).getChild(1))
-		else:
-			api.setNavigatorObject(objRot)
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
 	def clicNewTab(self, event):
-		# Para versiones Finales
-		nuevaPestañaBoton = (
-			("class","NonClientView"),
-			("class","BrowserView"),
-			("class","TopContainerView"),
-			("class","TabStripRegionView"),
-			("class","TabStrip"),
-			("class","View"),
-			("class","NewTabButton"))
-		objeto = self.searchObject(nuevaPestañaBoton, self.chromeObj)
-		if objeto == None:
-			# Para versiones beta y canary
-			nuevaPestañaBoton = (
-				("class","NonClientView"),
-				("class","BrowserView"),
-				("class","TopContainerView"),
-				("class","TabStripRegionView"),
-				("class","NewTabButton"))
-			objeto = self.searchObject(nuevaPestañaBoton, self.chromeObj)
-
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1)
 		mouseClick(objeto, "left")
 		self.Destroy()
 		gui.mainFrame.postPopup()
