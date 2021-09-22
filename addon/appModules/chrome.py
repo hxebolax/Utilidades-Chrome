@@ -39,6 +39,7 @@ from speech import cancelSpeech, speak
 from scriptHandler import willSayAllResume
 from gui import guiHelper, nvdaControls
 from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
+import keyboardHandler
 
 # Línea para definir la traducción
 addonHandler.initTranslation()
@@ -218,6 +219,17 @@ class AppModule(appModuleHandler.AppModule):
 			pass
 
 	@script(
+		gesture="kb:F4",
+		# Translators: Descripción del elemento en el diálogo de gestos de entrada
+		description= _("Silenciar el sonido"),
+		# Translators: Nombre complemento y categoría
+		category= _("Utilidades Chrome"))
+	def script_crhomeMute(self, gesture):
+		keyboardHandler.KeyboardInputGesture.fromName("NVDA+F2").send()
+		keyboardHandler.KeyboardInputGesture.fromName("m").send()
+		pass
+
+	@script(
 		gesture="kb:NVDA+F6",
 		# Translators: Descripción del elemento en el diálogo de gestos de entrada
 		description= _("Muestra diálogo de pestañas"),
@@ -228,7 +240,6 @@ class AppModule(appModuleHandler.AppModule):
 		chromeObj = api.getForegroundObject()
 		# Buscar pestañas.
 		pestañasTab = (
-			("class","BrowserRootView"),
 			("class","NonClientView"),
 			("class","GlassBrowserFrameView"),
 			("class","BrowserView"),
@@ -238,8 +249,7 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			obj = searchObject(pestañasTab).firstChild
 		except:
-			obj = chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).firstChild
-
+			obj = chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).firstChild
 		while obj:
 			if hasattr(obj, "IA2Attributes") and "class" in obj.IA2Attributes and obj.IA2Attributes["class"] == None:
 				break
@@ -333,7 +343,7 @@ class AppModule(appModuleHandler.AppModule):
 				message(_("Modo lectura no disponible"))
 			else:
 				try:
-					if api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+					if api.getForegroundObject().getChild(0).getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
 						# Translators: Mensaje indicando que se desactiva el modo lectura
 						message(_("Desactivando modo lectura..."))
 						time.sleep(0.5)
@@ -360,7 +370,7 @@ class AppModule(appModuleHandler.AppModule):
 		category= _("Utilidades Chrome"))
 	def script_modeReaderSpeak(self, gesture):
 		try:
-			if api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+			if api.getForegroundObject().getChild(0).getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
 				try:
 					readText(CURSOR_CARET)
 				except:
@@ -463,20 +473,20 @@ class TabDialog(wx.Dialog):
 
 	def clicLeft(self, event):
 		indice = self.myListBox.GetSelection()
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(indice)
 		mouseClick(objeto, "left")
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
 	def clicRight(self, event):
 		indice = self.myListBox.GetSelection()
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(indice)
 		mouseClick(objeto, "right")
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
 	def clicNewTab(self, event):
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1)
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(1)
 		mouseClick(objeto, "left")
 		self.Destroy()
 		gui.mainFrame.postPopup()
