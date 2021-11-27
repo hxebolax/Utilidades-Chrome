@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Chrome Araçları 0.94\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-17 21:11+0300\n"
+"PO-Revision-Date: 2021-11-19 18:48+0300\n"
+"Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Turkish\n"
+"X-Poedit-Country: TURKEY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: C:\\Users\\ITU\\AppData\\Roaming\\nvda\\addons\\ChromeUtilities\\appModules\n"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:54
+msgid "Foco al inicio"
+msgstr "Başa git"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:56
+msgid "Foco al final"
+msgstr "Sona git"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:76
+msgid "No hay controles en la página."
+msgstr "Sayfada herhangi bir kontrol yok."
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:114
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:140
+msgid "No soportado en este documento"
+msgstr "Bu belgede desteklenmiyor"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:224
+msgid "Silenciar el sonido"
+msgstr "Sesi kapat"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:226
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:237
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:271
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:300
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:328
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:370
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:387
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:505
+msgid "Utilidades Chrome"
+msgstr "Chrome yardımcı işlevler"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:235
+msgid "Muestra diálogo de pestañas"
+msgstr "Sekme listesini göster"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:269
+msgid "Muestra el historial atrás"
+msgstr "Geçmişte önceki öğeye git"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:286
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:314
+msgid "El botón no existe"
+msgstr "Düğme mevcut değil"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:290
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:318
+msgid "No hay historial para mostrar"
+msgstr "Gösterilecek geçmiş yok"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:298
+msgid "Muestra el historial adelante"
+msgstr "geçmişte sonraki öğeye git"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:326
+msgid "Activa y desactiva modo lectura"
+msgstr "Okuma modunu etkinleştirip devre dışı bırakır"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:343
+msgid "Modo lectura no disponible"
+msgstr "Okuma modu mevcut değil"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:348
+msgid "Desactivando modo lectura..."
+msgstr "Okuma modu devre dışı bırakıldı."
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:352
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:356
+msgid "Activando modo lectura..."
+msgstr "Okuma modu etkinleştirildi."
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:368
+msgid "Leer el resultado en modo lectura"
+msgstr "Okuma modunda tümünü oku"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:380
+msgid "No esta en modo lectura"
+msgstr "okuma modunda değil"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:385
+msgid "Activar y desactivar navegación cíclica"
+msgstr "Döngüsel navigasyonu etkinleştirip devre dışı bırakır"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:397
+msgid "Navegación cíclica desactivada."
+msgstr "Döngüsel navigasyon devre dışı."
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:405
+msgid "Navegación cíclica activada."
+msgstr "Döngüsel navigasyon etkin."
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:416
+msgid "Lista de pestañas"
+msgstr "Sekme Listesi"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:431
+msgid "Clic en botón &Izquierdo"
+msgstr "So&l tık"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:435
+msgid "Clic en botón &Derecho"
+msgstr "Sa&ğ tık"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:439
+msgid "&Nueva pestaña"
+msgstr "Ye&ni sekme"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:443
+msgid "&Cerrar"
+msgstr "&Kapat"
+
+#: C:\Users\ITU\AppData\Roaming\nvda\addons\ChromeUtilities\appModules/chrome.py:510
+msgid "Abrir las ventanas de Chrome maximizadas"
+msgstr "Chrome pencerelerini büyütülmüş olarak aç"
+
