@@ -245,7 +245,8 @@ class AppModule(appModuleHandler.AppModule):
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","TabStripRegionView"),
-			("class","TabStrip"))
+			("class","TabStrip"),
+			("class","TabContainer"))
 		try:
 			obj = searchObject(pestañasTab).firstChild
 		except:
@@ -258,7 +259,7 @@ class AppModule(appModuleHandler.AppModule):
 		for i in lista:
 			if i == None:
 				lista.remove(None)
-
+		print(lista)
 		self._TabDialog = TabDialog(gui.mainFrame, lista, chromeObj)
 		gui.mainFrame.prePopup()
 		self._TabDialog.Show()
@@ -473,14 +474,14 @@ class TabDialog(wx.Dialog):
 
 	def clicLeft(self, event):
 		indice = self.myListBox.GetSelection()
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
 		mouseClick(objeto, "left")
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
 	def clicRight(self, event):
 		indice = self.myListBox.GetSelection()
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
 		mouseClick(objeto, "right")
 		self.Destroy()
 		gui.mainFrame.postPopup()
