@@ -250,7 +250,7 @@ class AppModule(appModuleHandler.AppModule):
 		try:
 			obj = searchObject(pestañasTab).firstChild
 		except:
-			obj = chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).firstChild
+			obj = chromeObj.children[0].children[0].children[1].children[0].children[0].children[0].firstChild
 		while obj:
 			if hasattr(obj, "IA2Attributes") and "class" in obj.IA2Attributes and obj.IA2Attributes["class"] == None:
 				break
@@ -277,11 +277,10 @@ class AppModule(appModuleHandler.AppModule):
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","ToolbarView"))
-
-		obj = searchObject(atrasBTN).getChild(0)
+		obj = searchObject(atrasBTN).children[0]
 		if obj == None:
 			try:
-				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(0)
+				obj = api.getForegroundObject().children[0].children[0].children[1].children[0].children[1].children[0]
 			except AttributeError:
 				# Translators: Mensaje indicando que no existe el botón
 				message(_("El botón no existe"))
@@ -291,7 +290,7 @@ class AppModule(appModuleHandler.AppModule):
 			message(_("No hay historial para mostrar"))
 		else:
 			mouseClick(obj, "right")
-			api.setNavigatorObject(api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0))
+			api.setNavigatorObject(api.getForegroundObject().children[0].children[0].children[1].children[0].children[1].children[0])
 
 	@script(
 		gesture="kb:F8",
@@ -306,10 +305,10 @@ class AppModule(appModuleHandler.AppModule):
 			("class","BrowserView"),
 			("class","TopContainerView"),
 			("class","ToolbarView"))
-		obj = searchObject(adelanteBTN).getChild(1)
+		obj = searchObject(adelanteBTN).children[1]
 		if obj == None:
 			try:
-				obj = api.getForegroundObject().getChild(0).getChild(1).getChild(0).getChild(1).getChild(1)
+				obj = api.getForegroundObject().children[0].children[0].children[1].children[0].children[1].children[1]
 			except AttributeError:
 				# Translators: Mensaje indicando que no existe el botón
 				message(_("El botón no existe"))
@@ -319,7 +318,7 @@ class AppModule(appModuleHandler.AppModule):
 			message(_("No hay historial para mostrar"))
 		else:
 			mouseClick(obj, "right")
-			api.setNavigatorObject(api.getForegroundObject().getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0))
+			api.setNavigatorObject(api.getForegroundObject().children[0].children[0].children[1].children[0].children[1].children[1])
 
 	@script(
 		gesture="kb:F9",
@@ -344,7 +343,7 @@ class AppModule(appModuleHandler.AppModule):
 				message(_("Modo lectura no disponible"))
 			else:
 				try:
-					if api.getForegroundObject().getChild(0).getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+					if api.getForegroundObject().children[0].children[0].children[1].children[1].children[1].children[0].children[0].children[0].children[0].isFocusable == True:
 						# Translators: Mensaje indicando que se desactiva el modo lectura
 						message(_("Desactivando modo lectura..."))
 						time.sleep(0.5)
@@ -371,7 +370,7 @@ class AppModule(appModuleHandler.AppModule):
 		category= _("Utilidades Chrome"))
 	def script_modeReaderSpeak(self, gesture):
 		try:
-			if api.getForegroundObject().getChild(0).getChild(0).getChild(1).getChild(1).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).isFocusable == True:
+			if api.getForegroundObject().children[0].children[0].children[1].children[1].children[1].children[0].children[0].children[0].children[0].isFocusable == True:
 				try:
 					readText(CURSOR_CARET)
 				except:
@@ -463,7 +462,7 @@ class TabDialog(wx.Dialog):
 		if event == None:
 			return obj
 		else:
-			return obj.getChild(event)
+			return obj.children[event]
 
 	def OnSelection(self, event):
 		pass
@@ -474,20 +473,20 @@ class TabDialog(wx.Dialog):
 
 	def clicLeft(self, event):
 		indice = self.myListBox.GetSelection()
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.children[0].children[0].children[1].children[0].children[0].children[0].children[0].children[indice]
 		mouseClick(objeto, "left")
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
 	def clicRight(self, event):
 		indice = self.myListBox.GetSelection()
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(indice)
+		objeto = self.chromeObj.children[0].children[0].children[1].children[0].children[0].children[0].children[0].children[indice]
 		mouseClick(objeto, "right")
 		self.Destroy()
 		gui.mainFrame.postPopup()
 
 	def clicNewTab(self, event):
-		objeto = self.chromeObj.getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(1)
+		objeto = self.chromeObj.children[0].children[0].children[1].children[0].children[0].children[1]
 		mouseClick(objeto, "left")
 		self.Destroy()
 		gui.mainFrame.postPopup()
