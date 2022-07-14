@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the 'ChromeUtilities' package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 'ChromeUtilities' '0.101'\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2022-07-12 12:04+0300\n"
+"PO-Revision-Date: 2022-07-14 16:22+0300\n"
+"Last-Translator: Ivan Shtefuriak <ip0877@gmail.com>\n"
+"Language-Team: Ukrainian NVDA Community\n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#. Translators: Texto que avisa cuando se desplaza al inicio
+#: addon\appModules\chrome.py:54
+msgid "Foco al inicio"
+msgstr "Фокус на початок"
+
+#. Translators: Texto que avisa cuando se desplaza al final
+#: addon\appModules\chrome.py:56
+msgid "Foco al final"
+msgstr "Фокус в кінець"
+
+#. translators: Mensaje que avisa la falta de controles
+#: addon\appModules\chrome.py:76
+msgid "No hay controles en la página."
+msgstr "На сторінці немає елементів керування."
+
+#. Translators: Mensaje que indica que no se soporta en el documento
+#. Translators: a message when a particular quick nav command is not supported in the current document.
+#: addon\appModules\chrome.py:114 addon\appModules\chrome.py:140
+msgid "No soportado en este documento"
+msgstr "Не підтримується в цьому документі"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\chrome.py:224
+msgid "Silenciar el sonido"
+msgstr "Вимикає звук"
+
+#. Translators: Nombre complemento y categoría
+#. TRANSLATORS: title for the Update Channel settings category
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: addon\appModules\chrome.py:226 addon\appModules\chrome.py:237
+#: addon\appModules\chrome.py:272 addon\appModules\chrome.py:300
+#: addon\appModules\chrome.py:328 addon\appModules\chrome.py:370
+#: addon\appModules\chrome.py:387 addon\appModules\chrome.py:505
+#: buildVars.py:23
+msgid "Utilidades Chrome"
+msgstr "Утиліти для Chrome"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\chrome.py:235
+msgid "Muestra diálogo de pestañas"
+msgstr "Відкриває діалог вкладок"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\chrome.py:270
+msgid "Muestra el historial atrás"
+msgstr "Показує попередню історію перегляду"
+
+#. Translators: Mensaje indicando que no existe el botón
+#: addon\appModules\chrome.py:286 addon\appModules\chrome.py:314
+msgid "El botón no existe"
+msgstr "Кнопки не існує"
+
+#. Translators: Mensaje que indica que no hay historial
+#: addon\appModules\chrome.py:290 addon\appModules\chrome.py:318
+msgid "No hay historial para mostrar"
+msgstr "Немає історії для відображення"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\chrome.py:298
+msgid "Muestra el historial adelante"
+msgstr "Показує подальшу історію перегляду"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\chrome.py:326
+msgid "Activa y desactiva modo lectura"
+msgstr "Вмикає і вимикає режим читання"
+
+#. Translators: Mensaje que indica que no hay modo lectura
+#: addon\appModules\chrome.py:343
+msgid "Modo lectura no disponible"
+msgstr "Режим читання недоступний"
+
+#. Translators: Mensaje indicando que se desactiva el modo lectura
+#: addon\appModules\chrome.py:348
+msgid "Desactivando modo lectura..."
+msgstr "Вимкнути режим читання..."
+
+#. Translators: Mensaje indicando que se activa el modo lectura
+#: addon\appModules\chrome.py:352 addon\appModules\chrome.py:356
+msgid "Activando modo lectura..."
+msgstr "Увімкнути режим читання..."
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\chrome.py:368
+msgid "Leer el resultado en modo lectura"
+msgstr "Читає вміст сторінки у режимі читання"
+
+#. Translators: Mensaje que indica que no estamos en modo lectura
+#: addon\appModules\chrome.py:380
+msgid "No esta en modo lectura"
+msgstr "Не в режимі читання"
+
+#. Translators: Descripción del elemento en el diálogo de gestos de entrada
+#: addon\appModules\chrome.py:385
+msgid "Activar y desactivar navegación cíclica"
+msgstr "Вмикає і вимикає циклічну навігацію"
+
+#. Translators: Mensaje que anuncia la desactivación de la navegación cíclica
+#: addon\appModules\chrome.py:397
+msgid "Navegación cíclica desactivada."
+msgstr "Циклічну навігацію вимкнено."
+
+#. Translators: Mensaje que anuncia la activación de la navegación cíclica
+#: addon\appModules\chrome.py:405
+msgid "Navegación cíclica activada."
+msgstr "Циклічну навігацію увімкнено."
+
+#. Translators: Titulo de la ventana de diálogo de pestañas
+#: addon\appModules\chrome.py:416
+msgid "Lista de pestañas"
+msgstr "Список вкладок"
+
+#. Translators: Nombre para el botón clic izquierdo
+#: addon\appModules\chrome.py:431
+msgid "Clic en botón &Izquierdo"
+msgstr "&Натиснути ліву кнопку"
+
+#. Translators: Nombre para el botón clic derecho
+#: addon\appModules\chrome.py:435
+msgid "Clic en botón &Derecho"
+msgstr "Натиснути &праву кнопку"
+
+#. Translators: Nombre para el botón nueva pestaña
+#: addon\appModules\chrome.py:439
+msgid "&Nueva pestaña"
+msgstr "&Нова вкладка"
+
+#. Translators: Nombre para el botón cerrar
+#: addon\appModules\chrome.py:443
+msgid "&Cerrar"
+msgstr "&Закрити"
+
+#: addon\appModules\chrome.py:510
+msgid "Abrir las ventanas de Chrome maximizadas"
+msgstr "Розгортати вікна Chrome на весь екран"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid "Pequeños scripts para mejorar el uso del navegador Chrome."
+msgstr "Невеликі скрипти для покращення взаємодії з браузером Chrome."
