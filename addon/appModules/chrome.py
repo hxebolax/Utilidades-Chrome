@@ -40,9 +40,13 @@ from scriptHandler import willSayAllResume
 from gui import guiHelper, nvdaControls
 from gui.settingsDialogs import NVDASettingsDialog, SettingsPanel
 import keyboardHandler
+import controlTypes
+import braille
 
 # Línea para definir la traducción
 addonHandler.initTranslation()
+
+getRole = lambda attr: getattr(controlTypes, f'ROLE_{attr}') if hasattr(controlTypes, 'ROLE_BUTTON') else getattr(controlTypes.Role, attr)
 
 confspec = {
 	'isActive':'boolean(default=False)',
@@ -194,8 +198,10 @@ def _calculatePosition(width, height):
 	return (x, y)
 
 class AppModule(appModuleHandler.AppModule):
-	def __init__(self, *args, **kwargs):
-		super(AppModule, self).__init__(*args, **kwargs)
+	activityIDs = []
+
+	def __init__(self, processID, appName):
+		super(AppModule, self).__init__(processID, appName)
 
 		# Mirar sustituir por shellapi.ShellExecute
 		if config.conf["chromeconfig"]["maximizar"]:
@@ -217,6 +223,13 @@ class AppModule(appModuleHandler.AppModule):
 				BrowseModeTreeInterceptor._quickNavScript = self.oldQuickNav
 		except:
 			pass
+
+	def event_alert(self, obj, nextHandler):
+		if obj.role != getRole("ALERT"):
+			return
+		if obj.IAccessibleObject.accName(obj.IAccessibleChildID).split()[0] == _("Descarga"):
+			braille.handler.message(obj.IAccessibleObject.accName(obj.IAccessibleChildID))
+		nextHandler()
 
 	@script(
 		gesture="kb:F4",

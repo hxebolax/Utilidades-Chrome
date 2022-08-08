@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: nvda\n"
+"POT-Creation-Date: 2022-05-08 13:32+0300\n"
+"PO-Revision-Date: 2022-05-08 13:33+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ../../../appModules\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: chrome.py:54
+msgid "Foco al inicio"
+msgstr "Фокус в начале"
+
+#: chrome.py:56
+msgid "Foco al final"
+msgstr "Фокус в конце"
+
+#: chrome.py:76
+msgid "No hay controles en la página."
+msgstr "На странице нет элементов управления."
+
+#: chrome.py:114 chrome.py:140
+msgid "No soportado en este documento"
+msgstr "Не поддерживается в этом документе"
+
+#: chrome.py:224
+msgid "Silenciar el sonido"
+msgstr "Отключить звук"
+
+#. TRANSLATORS: title for the Update Channel settings category
+#: chrome.py:226 chrome.py:237 chrome.py:272 chrome.py:300 chrome.py:328
+#: chrome.py:370 chrome.py:387 chrome.py:505
+msgid "Utilidades Chrome"
+msgstr "Утилиты Chrome"
+
+#: chrome.py:235
+msgid "Muestra diálogo de pestañas"
+msgstr "Отображает диалоговое окно вкладок"
+
+#: chrome.py:270
+msgid "Muestra el historial atrás"
+msgstr "Показать предыдущую историю"
+
+#: chrome.py:286 chrome.py:314
+msgid "El botón no existe"
+msgstr "Кнопка не существует"
+
+#: chrome.py:290 chrome.py:318
+msgid "No hay historial para mostrar"
+msgstr "Нет истории для отображения"
+
+#: chrome.py:298
+msgid "Muestra el historial adelante"
+msgstr "Показать следующую историю"
+
+#: chrome.py:326
+msgid "Activa y desactiva modo lectura"
+msgstr "Включение и выключение режима чтения"
+
+#: chrome.py:343
+msgid "Modo lectura no disponible"
+msgstr "Режим чтения недоступен"
+
+#: chrome.py:348
+msgid "Desactivando modo lectura..."
+msgstr "Отключение режима чтения..."
+
+#: chrome.py:352 chrome.py:356
+msgid "Activando modo lectura..."
+msgstr "Включаю режим чтения..."
+
+#: chrome.py:368
+msgid "Leer el resultado en modo lectura"
+msgstr "Читать результат в режиме чтения"
+
+#: chrome.py:380
+msgid "No esta en modo lectura"
+msgstr "Это не в режиме чтения"
+
+#: chrome.py:385
+msgid "Activar y desactivar navegación cíclica"
+msgstr "Включение и выключение циклической навигации"
+
+#: chrome.py:397
+msgid "Navegación cíclica desactivada."
+msgstr "Циклическая навигация отключена."
+
+#: chrome.py:405
+msgid "Navegación cíclica activada."
+msgstr "Циклическая навигация включена."
+
+#: chrome.py:416
+msgid "Lista de pestañas"
+msgstr "Список вкладок"
+
+#: chrome.py:431
+msgid "Clic en botón &Izquierdo"
+msgstr "&Щелкните левой кнопкой мыши"
+
+#: chrome.py:435
+msgid "Clic en botón &Derecho"
+msgstr "&Щелкните правой кнопкой мыши"
+
+#: chrome.py:439
+msgid "&Nueva pestaña"
+msgstr "&Новая вкладка"
+
+#: chrome.py:443
+msgid "&Cerrar"
+msgstr "&Закрыть"
+
+#: chrome.py:510
+msgid "Abrir las ventanas de Chrome maximizadas"
+msgstr "Открыть развернутые окна Chrome"
