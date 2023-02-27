@@ -227,6 +227,8 @@ class AppModule(appModuleHandler.AppModule):
 	def event_alert(self, obj, nextHandler):
 		if obj.role != getRole("ALERT"):
 			return
+		if obj.IAccessibleObject.accName(obj.IAccessibleChildID) == None:
+			return
 		if obj.IAccessibleObject.accName(obj.IAccessibleChildID).split()[0] == _("Descarga"):
 			braille.handler.message(obj.IAccessibleObject.accName(obj.IAccessibleChildID))
 		nextHandler()

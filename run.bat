@@ -2,4 +2,4 @@
 @echo off
 scons --clean
 scons
-ChromeUtilities-0.101.nvda-addon
+ChromeUtilities-0.110.nvda-addon
