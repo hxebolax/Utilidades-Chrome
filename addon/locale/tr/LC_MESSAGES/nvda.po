@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chrome Araçları 0.104\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2022-08-08 19:28+0200\n"
-"PO-Revision-Date: 2022-08-08 20:47+0200\n"
+"POT-Creation-Date: 2023-02-27 11:31+0100\n"
+"PO-Revision-Date: 2023-03-02 14:54+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../../../appModules\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. Translators: Texto que avisa cuando se desplaza al inicio
@@ -37,12 +37,12 @@ msgstr "Sayfada herhangi bir kontrol yok."
 msgid "No soportado en este documento"
 msgstr "Bu belgede desteklenmiyor"
 
-#: addon\appModules\chrome.py:230
+#: addon\appModules\chrome.py:232
 msgid "Descarga"
 msgstr "Boşalt"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:237
+#: addon\appModules\chrome.py:239
 msgid "Silenciar el sonido"
 msgstr "Sesi kapat"
 
@@ -51,110 +51,110 @@ msgstr "Sesi kapat"
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
 #. to be shown on installation and add-on information found in Add-ons Manager.
-#: addon\appModules\chrome.py:239 addon\appModules\chrome.py:250
-#: addon\appModules\chrome.py:285 addon\appModules\chrome.py:313
-#: addon\appModules\chrome.py:341 addon\appModules\chrome.py:383
-#: addon\appModules\chrome.py:400 addon\appModules\chrome.py:518
+#: addon\appModules\chrome.py:241 addon\appModules\chrome.py:252
+#: addon\appModules\chrome.py:287 addon\appModules\chrome.py:315
+#: addon\appModules\chrome.py:343 addon\appModules\chrome.py:385
+#: addon\appModules\chrome.py:402 addon\appModules\chrome.py:520
 #: buildVars.py:23
 msgid "Utilidades Chrome"
 msgstr "Chrome yardımcı işlevler"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:248
+#: addon\appModules\chrome.py:250
 msgid "Muestra diálogo de pestañas"
 msgstr "Sekme listesini göster"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:283
+#: addon\appModules\chrome.py:285
 msgid "Muestra el historial atrás"
 msgstr "Geçmişte önceki öğeye git"
 
 #. Translators: Mensaje indicando que no existe el botón
-#: addon\appModules\chrome.py:299 addon\appModules\chrome.py:327
+#: addon\appModules\chrome.py:301 addon\appModules\chrome.py:329
 msgid "El botón no existe"
 msgstr "Düğme mevcut değil"
 
 #. Translators: Mensaje que indica que no hay historial
-#: addon\appModules\chrome.py:303 addon\appModules\chrome.py:331
+#: addon\appModules\chrome.py:305 addon\appModules\chrome.py:333
 msgid "No hay historial para mostrar"
 msgstr "Gösterilecek geçmiş yok"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:311
+#: addon\appModules\chrome.py:313
 msgid "Muestra el historial adelante"
-msgstr "geçmişte sonraki öğeye git"
+msgstr "Geçmişte sonraki öğeye git"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:339
+#: addon\appModules\chrome.py:341
 msgid "Activa y desactiva modo lectura"
 msgstr "Okuma modunu etkinleştirip devre dışı bırakır"
 
 #. Translators: Mensaje que indica que no hay modo lectura
-#: addon\appModules\chrome.py:356
+#: addon\appModules\chrome.py:358
 msgid "Modo lectura no disponible"
 msgstr "Okuma modu mevcut değil"
 
 #. Translators: Mensaje indicando que se desactiva el modo lectura
-#: addon\appModules\chrome.py:361
+#: addon\appModules\chrome.py:363
 msgid "Desactivando modo lectura..."
 msgstr "Okuma modu devre dışı bırakıldı."
 
 #. Translators: Mensaje indicando que se activa el modo lectura
-#: addon\appModules\chrome.py:365 addon\appModules\chrome.py:369
+#: addon\appModules\chrome.py:367 addon\appModules\chrome.py:371
 msgid "Activando modo lectura..."
 msgstr "Okuma modu etkinleştirildi."
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:381
+#: addon\appModules\chrome.py:383
 msgid "Leer el resultado en modo lectura"
 msgstr "Okuma modunda tümünü oku"
 
 #. Translators: Mensaje que indica que no estamos en modo lectura
-#: addon\appModules\chrome.py:393
+#: addon\appModules\chrome.py:395
 msgid "No esta en modo lectura"
-msgstr "okuma modunda değil"
+msgstr "Okuma modunda değil"
 
 #. Translators: Descripción del elemento en el diálogo de gestos de entrada
-#: addon\appModules\chrome.py:398
+#: addon\appModules\chrome.py:400
 msgid "Activar y desactivar navegación cíclica"
 msgstr "Döngüsel navigasyonu etkinleştirip devre dışı bırakır"
 
 #. Translators: Mensaje que anuncia la desactivación de la navegación cíclica
-#: addon\appModules\chrome.py:410
+#: addon\appModules\chrome.py:412
 msgid "Navegación cíclica desactivada."
 msgstr "Döngüsel navigasyon devre dışı."
 
 #. Translators: Mensaje que anuncia la activación de la navegación cíclica
-#: addon\appModules\chrome.py:418
+#: addon\appModules\chrome.py:420
 msgid "Navegación cíclica activada."
 msgstr "Döngüsel navigasyon etkin."
 
 #. Translators: Titulo de la ventana de diálogo de pestañas
-#: addon\appModules\chrome.py:429
+#: addon\appModules\chrome.py:431
 msgid "Lista de pestañas"
 msgstr "Sekme Listesi"
 
 #. Translators: Nombre para el botón clic izquierdo
-#: addon\appModules\chrome.py:444
+#: addon\appModules\chrome.py:446
 msgid "Clic en botón &Izquierdo"
 msgstr "So&l tık"
 
 #. Translators: Nombre para el botón clic derecho
-#: addon\appModules\chrome.py:448
+#: addon\appModules\chrome.py:450
 msgid "Clic en botón &Derecho"
 msgstr "Sa&ğ tık"
 
 #. Translators: Nombre para el botón nueva pestaña
-#: addon\appModules\chrome.py:452
+#: addon\appModules\chrome.py:454
 msgid "&Nueva pestaña"
 msgstr "Ye&ni sekme"
 
 #. Translators: Nombre para el botón cerrar
-#: addon\appModules\chrome.py:456
+#: addon\appModules\chrome.py:458
 msgid "&Cerrar"
 msgstr "&Kapat"
 
-#: addon\appModules\chrome.py:523
+#: addon\appModules\chrome.py:525
 msgid "Abrir las ventanas de Chrome maximizadas"
 msgstr "Chrome pencerelerini büyütülmüş olarak aç"
 
@@ -162,4 +162,4 @@ msgstr "Chrome pencerelerini büyütülmüş olarak aç"
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 #: buildVars.py:26
 msgid "Pequeños scripts para mejorar el uso del navegador Chrome."
-msgstr "Chrome tarayıcısının kullanımını iyileştirmek için küçük komut dosyaları."
+msgstr "Chrome tarayıcısının kullanımını iyileştirmek için küçük komutlar."
